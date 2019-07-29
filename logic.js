@@ -22,6 +22,9 @@ lis.forEach((li,i) => {
 li.addEventListener('click', function() {
     lis.forEach((li, i) => {
         const isOpen = this.classList.contains('open');
-        
-    })
-})
+        const height = getHeight(li);
+        li.style.top = isOpen ? getStackedTop(i) : `${(height + 5) * i}px`;
+        li.style.opacity = isOpen && i > 0 ? getOpacity(i) : 1;
+    });
+    this.classList.toggle('open');
+});
